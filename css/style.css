@@ -1,0 +1,233 @@
+/* style.css - Temperature Converter */
+
+/* Design tokens: colours, font and spacing reused everywhere. */
+:root {
+  --bg: #eef2f7;
+  --card-bg: #ffffff;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --border: #d4dae2;
+  --primary: #2f6df6;
+  --primary-text: #ffffff;
+  --result-bg: #f4f7fb;
+  --error: #c0392b;
+  --ok: #1f8a4c;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --radius: 14px;
+  --font: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+/* Dark mode just swaps the colours. */
+body[data-theme="dark"] {
+  --bg: #161b22;
+  --card-bg: #1f2630;
+  --text: #f0f3f6;
+  --muted: #aab4c0;
+  --border: #38404c;
+  --primary: #5b8cff;
+  --primary-text: #0d1117;
+  --result-bg: #262e3a;
+  --error: #ff8a80;
+  --ok: #6ee7a0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* The main card. */
+.card {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.subtitle {
+  margin: var(--space-1) 0 var(--space-3) 0;
+  color: var(--muted);
+}
+
+.theme-toggle {
+  min-height: 44px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+/* Input fields. */
+.field {
+  margin-bottom: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input,
+select {
+  min-height: 44px;
+  padding: 0 var(--space-2);
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* Messages. */
+.message {
+  min-height: 1.2em;
+  margin: 0 0 var(--space-1) 0;
+  font-size: 0.95rem;
+  color: var(--error);
+}
+
+.message.ok {
+  color: var(--ok);
+}
+
+.context {
+  min-height: 1.2em;
+  margin: 0 0 var(--space-2) 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Results. */
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: var(--result-bg);
+  border-radius: 10px;
+}
+
+.result-label {
+  font-weight: 600;
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.result-value {
+  flex-grow: 1;
+  min-width: 80px;
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Buttons. */
+.copy-btn,
+.clear-btn {
+  min-height: 44px;
+  padding: 0 var(--space-2);
+  border: none;
+  border-radius: 8px;
+  background: var(--primary);
+  color: var(--primary-text);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.clear-btn {
+  width: 100%;
+}
+
+.copy-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Hover and focus states. */
+.theme-toggle:hover,
+.copy-btn:not(:disabled):hover,
+.clear-btn:hover {
+  filter: brightness(1.08);
+}
+
+.theme-toggle:hover {
+  background: var(--result-bg);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.page-footer {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* On wider screens, place the label and input side by side. */
+@media (min-width: 601px) {
+  .field {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  label {
+    width: 120px;
+    flex-shrink: 0;
+  }
+
+  input,
+  select {
+    flex-grow: 1;
+  }
+}
