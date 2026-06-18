@@ -37,12 +37,9 @@ temperature-converter/
 └── README.md
 ```
 
-## How to deploy (GitHub Pages)
+Live Demo
 
-1. Push the project to a GitHub repository.
-2. Go to the repository's **Settings → Pages**.
-3. Under "Branch", choose `main` and the `/ (root)` folder, then save.
-4. After a minute, your app is live at `https://<your-username>.github.io/<repo-name>/`.
+https://armaan0047.github.io/SCT_SD_1/
 
 ## Built with
 
